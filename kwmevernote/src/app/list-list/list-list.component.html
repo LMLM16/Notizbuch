@@ -1,0 +1,34 @@
+
+
+<div style="text-align: center; margin: 5px 0; background-color: ghostwhite">
+  <button class="ui pink button" style="font-size: 1.5em;" (click)="navigateToCreateList()">Neue Liste erstellen</button>
+  <button class="ui white button" style="font-size: 1.5em; border: 2px solid deeppink; color: deeppink" (click)="navigateToToDos()">Meine Todos anzeigen</button>
+</div>
+
+<div class="ui divider"></div>
+
+<div class="ui container">
+  <div class="ui centered stackable four column grid">
+    <div class="column" *ngFor="let list of lists">
+      <div class="ui card">
+        <div class="content" style="text-align: center;">
+          <div class="header">{{ list.name }}</div>
+          <div class="description">
+            <p>-----------</p>
+          </div>
+        </div>
+        <div class="extra content" style="text-align: center;">
+          <div class="ui three tiny buttons">
+            <button class="ui white button" style="border: 1px solid deeppink;color: deeppink" (click)="viewListDetails(list.id)">Details anzeigen</button>
+            <button class="ui button" (click)="editList(list.id)">Bearbeiten</button>
+            <button class="ui white button" style="border: 1px solid red; color: red" (click)="deleteList(list.id)">Löschen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui segment">
+    <app-taglist></app-taglist>
+  </div>
+
+</div>

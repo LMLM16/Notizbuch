@@ -1,0 +1,42 @@
+<div class="ui container">
+  <h1 class="ui header">Notizformular</h1>
+  <form class="ui large form" [formGroup]="listForm" (ngSubmit)="submitForm()">
+    <div class="ui segment">
+      <div class="field">
+        <label>User ID</label>
+        <input type="number" formControlName="user_id" placeholder="User ID eingeben">
+        <div *ngIf="errors['user_id']" class="ui negative message">
+          <div class="header">Fehler</div>
+          <p>{{ errors['user_id'] }}</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Name</label>
+        <input formControlName="name" placeholder="Name eingeben">
+        <div *ngIf="errors['name']" class="ui negative message">
+          <div class="header">Fehler</div>
+          <p>{{ errors['name'] }}</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Öffentlich</label>
+        <select formControlName="is_public" class="ui dropdown">
+          <option [value]="true">Ja</option>
+          <option [value]="false">Nein</option>
+        </select>
+        <div *ngIf="errors['is_public']" class="ui negative message">
+          <div class="header">Fehler</div>
+          <p>{{ errors['is_public'] }}</p>
+        </div>
+      </div>
+
+      <div class="ui buttons">
+        <button type="button" class="ui button" (click)="goBack()">Zurück zur Übersicht</button>
+        <div class="or"></div>
+        <button type="submit" class="ui  pink button" [disabled]="listForm.invalid">Speichern</button>
+      </div>
+    </div>
+  </form>
+</div>

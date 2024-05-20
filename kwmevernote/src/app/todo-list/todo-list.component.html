@@ -1,0 +1,21 @@
+<div class="ui container">
+  <h2 class="ui header">Todos</h2>
+  <div *ngIf="todos && todos.length > 0" class="ui divided items">
+    <div *ngFor="let todo of todos" class="item">
+      <div class="content">
+        <h3 class="header">Title: {{ todo.title }}</h3>
+        <div class="description">
+          <p>Description: {{ todo.description }}</p>
+          <p>Due Date: {{ todo.due_date }}</p>
+          <p>Note ID: {{ todo.note_id }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!todos || todos.length === 0" class="ui message">
+    <p>No todos available</p>
+  </div>
+  <div class="ui buttons">
+    <button class="ui white button" style="border: 1px solid deeppink; color: deeppink" (click)="goBack()">Zurück zur Übersicht</button>
+  </div>
+</div>

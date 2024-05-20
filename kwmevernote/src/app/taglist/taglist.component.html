@@ -1,0 +1,10 @@
+<div class="ui container">
+  <h2 class="ui header">Tags</h2>
+  <div class="ui grid">
+    <div class="three column row">
+      <div class="column" *ngFor="let tag of tags; let i = index" [ngClass]="{'center aligned': true}">
+        <div class="ui segment">{{ tag.name }}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="ui container">
+  <h1 class="ui header">Listenansicht</h1>
+  <div *ngIf="list && list.notes && list.notes.length > 0" class="ui divided items">
+    <div *ngFor="let note of list.notes" class="item">
+      <div class="content">
+        <h2 class="header">{{ note.title }}</h2>
+        <div class="meta">
+          <span>User: {{ note.user_id }} </span>
+        </div>
+        <ul>
+          <li *ngFor="let tag of tags">{{ tag.name }}</li>
+        </ul>
+
+        <div class="extra">
+          <button class="ui white button" style="border: 1px solid deeppink; color: deeppink" (click)="editNote(note.id)">Bearbeiten</button>
+          <button class="ui negative button" (click)="deleteNote(note.id)">Löschen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!list || !list.notes || list.notes.length === 0" class="ui message">
+    <p>No notes available</p>
+  </div>
+  <div class="ui buttons">
+    <button class="ui white button" style="border: 1px solid deeppink; color: deeppink"  (click)="goBack()">Zurück zur Übersicht</button>
+    <button class="ui pink button"  (click)="navigateToCreateNote()">Neue Notiz erstellen</button>
+  </div>
+</div>

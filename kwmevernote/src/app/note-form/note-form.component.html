@@ -1,0 +1,58 @@
+<div class="ui container">
+  <h1 class="ui header">{{ isUpdatingNote ? 'Notiz bearbeiten' : 'Neue Notiz erstellen' }}</h1>
+  <form class="ui large form" [formGroup]="noteForm" (ngSubmit)="submitForm()">
+    <div class="ui segment">
+      <div class="field">
+        <label>User ID</label>
+        <input type="number" formControlName="user_id" placeholder="User ID eingeben">
+        <div *ngIf="errors['user_id']" class="ui negative message">
+          <div class="header">Fehler</div>
+          <p>{{ errors['user_id'] }}</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Titel</label>
+        <input formControlName="title" placeholder="Titel eingeben">
+        <div *ngIf="errors['title']" class="ui negative message">
+          <div class="header">Fehler</div>
+          <p>{{ errors['title'] }}</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Inhalt</label>
+        <textarea formControlName="content" placeholder="Inhalt eingeben"></textarea>
+        <div *ngIf="errors['content']" class="ui negative message">
+          <div class="header">Fehler</div>
+          <p>{{ errors['content'] }}</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Bewertung</label>
+        <input type="number" formControlName="rating" placeholder="Bewertung eingeben">
+        <div *ngIf="errors['rating']" class="ui negative message">
+          <div class="header">Fehler</div>
+          <p>{{ errors['rating'] }}</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>List ID</label>
+        <input type="number" formControlName="list_id" placeholder="List ID eingeben">
+        <div *ngIf="errors['list_id']" class="ui negative message">
+          <div class="header">Fehler</div>
+          <p>{{ errors['list_id'] }}</p>
+        </div>
+      </div>
+
+      <div class="ui buttons">
+        <button type="submit" class="ui white button" style="border: 1px solid deeppink; color: deeppink" [disabled]="noteForm.invalid">Speichern</button>
+        <div class="or"></div>
+        <button type="button" class="ui button" (click)="goBack()">Zurück zur Übersicht</button>
+        <button *ngIf="isUpdatingNote" type="button" class="ui negative button" (click)="deleteNote()">Löschen</button>
+      </div>
+    </div>
+  </form>
+</div>
